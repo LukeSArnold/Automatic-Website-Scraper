@@ -1,29 +1,46 @@
-# CS 1440 Assignment 5: Recursive Web Crawler
+# Recursive Web Crawler User Manual
 
-* [Instructions](./instructions/README.md)
-* [Rubric](./instructions/Rubric.md)
-* [Hints](./instructions/Hints.md)
-* [Sample output](./instructions/Output.md)
+**Program Information**
 
-
-## Background story
-
-This time he wants to create a visualization of the World Wide Web (WWW) that captures the breadth and depth of its interconnections (something to do with Russians and fake news, sounds like a scam if you ask me!)  He is convinced that it looks like some kind of recursive tree-thing.  But he has no idea of how many branches there will be, nor how far it is from root to tip.  More data is needed.  One way to generate this data is to grab a notebook and fire up your favorite web browser.  Go to a web page (just about any page will do) and start clicking links.  Each time you click a link, check your notebook to see if you've been there before.  If you haven't, write it down in the notebook and click away.  If you have already been there, go to the next link.
-
-If you ever get to a dead-end where there are no links to click, or if all of the links have already been visited, go back to an earlier page with unvisited links and continue from there.  Now that I think about it, you will want to keep track of which pages lead to which links so you'll know how far back into the notebook you should backtrack when you hit a dead-end...  Now that I write this down, it strikes me as being very tedious and repetitive (and error-prone!).  It's obvious that this job should be done by a program.  Google, Bing and Yahoo! have programs called "web crawlers" that do this.  It's time to write your own!  Given the time constraints we must work under, it seems prudent to leverage existing solutions instead of re-inventing the wheel.
-
-Your task is to use software libraries to write a recursive web crawler which, given a starting URL, will visit all web pages reachable from that page, then visit all pages reachable from those pages, etc., up to a specified maximum depth.  Once a URL has been visited it must *NOT* be re-visited.  Due to the World Wide Web's structure as an undirected graph of hyperlinks, a recursive algorithm is the natural choice to traverse it.
+The crawler.py program is a python script that will parse through the different
+links of a website, clicking on each link and following the link tree through different
+websites. The program will print the different links to the scren, as well as keep track
+of what links have been visited.
+The program will only go to a user specified level of depth when navigating
+different websites.
 
 
-## Running the starter code
+**Running the Program**
 
-In addition to the crawler that you will complete, 4 code demos and a test server are provided.
+To start the program the user should call crawler.py from
+the command line interface
 
-0.  `src/crawler.py` - The starter code that you will complete
-1.  `demo/demo_beautifulsoup.py` - Example of how to use the BeautifulSoup library
-2.  `demo/demo_requests.py - Example of how to use the Requests library
-3.  `demo/demo_urljoin.py - Example of how to use the URL Join library
-4.  `demo/demo_urlparse.py - Example of how to use the URL Parse library
-5.  `demo/testing_server.py - A controlled environment from which to test your program
+        $ python [directory]/crawler.py
 
-You should read and run all of the demos so you can be sure of how to use the required libraries.  `testing_server.py` will help you exercise your web crawler and track down the last tricky bugs.
+Following this the user should pass in an absolute URL as the first paremeter
+of the program. This is where the web crawler will start from
+
+        $python [directory]/crawler.py https://absolute_url
+
+The crawler will default to 3 layers of depth, though the user can override this
+level of depth with an optional paremeter
+
+[Optional Parmeter]
+
+        If the user wishes they can add in an optional paremeter to
+        change the level of depth the program links to. This is done
+        by adding an integer into the second parameter
+
+        $python [directory]/crawler.py https://absolute_url [integer]
+
+
+**Potential Errors**
+
+An error will arrise if the user attempts to pass in
+anything other than an absolute url for the main program paramter.
+
+An error will also arrise if the user attempts to pass in a non
+integer value into the optional depth requirement
+
+The program may come accross websites that cannot be accessed while running, this will
+result in an error message being printed, but not the crashing of the program.
