@@ -44,3 +44,10 @@ integer value into the optional depth requirement
 
 The program may come accross websites that cannot be accessed while running, this will
 result in an error message being printed, but not the crashing of the program.
+
+**Dependencies**
+
+The program requires the importation of two modules, bs4 and requests, to import simply run
+
+        $python -m pip install bs4
+        $python -m pip install requests
