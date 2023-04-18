@@ -1,4 +1,4 @@
-# Recursive Web Crawler User Manual
+# Automatic Website Scraper User Manual
 
 **Program Information**
 
